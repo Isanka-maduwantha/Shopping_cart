@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+    --color-white-back: #FBFBFB;
+  
+    --color-eye-catching-300: #FCCD2A13;
+    --color-eye-catching-400: #FCCD2A18;
+    --color-eye-catching-500: #FCCD2Aa3;
+    --color-eye-catching-600: #FCCD2A;
+    --color-bermuda: #78dcca;
+    --color-acent-red:#e85a4f;
+    --color-acent-red-02:#e98074;
+    --color-acent-greyish:#8e8d8a;
+    --color-acent-brown:#d8c3a5;
+    --color-acent-grey:#eae7dc;
+
+  }
