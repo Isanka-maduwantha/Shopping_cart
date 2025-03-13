@@ -1,4 +1,5 @@
 import { useState,useEffect } from 'react'
+import {  useLocation } from 'react-router-dom'
 import './App.css'
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AppBar, Typography } from '@mui/material';
@@ -9,14 +10,12 @@ import Main from './Components/Home/Main';
 import CardContainer from './Components/Home/CardContainer';
 
 function App() {
-
-  const [count, setCount] = useState(0);
   const [loading,setLoading] = useState(true);
   const [productList,setProductList] = useState([]);
   const [cartList,setCartList] = useState([])
   const navigate = useNavigate();
   const UpdateCartList = (item) => {
-    console.log(item)
+ 
     
     setCartList(
       [...cartList,item]
