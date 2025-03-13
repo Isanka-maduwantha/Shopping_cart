@@ -45,18 +45,7 @@ function App() {
             </Main>
            
             <CardContainer productList={productList} setCartList={UpdateCartList}/>
-      {/* <Card productUpdate={UpdateProduct} /> */}
-      <h1>Hello from the main page of the app!</h1>
-      <p>Here are some examples of links to other pages</p>
-      <nav>
-        <ul>
-          <li>
 
-            <Link to='profile'>Profile page</Link>
-            
-          </li>
-        </ul>
-      </nav>
     </div>
     </>
   )
