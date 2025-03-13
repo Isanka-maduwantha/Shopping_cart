@@ -1,8 +1,9 @@
 import React from 'react'
+import CheckoutCard from './CheckoutCard'
 
-const CartList = () => {
+const CartList = ({cartList}) => {
   return (
-    <div>CartList</div>
+    <CheckoutCard cartList={cartList}/>
   )
 }
 

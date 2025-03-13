@@ -2,8 +2,8 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import CheckoutList from "./Components/Cart/CheckoutList";
-
+import Checkout from "./Components/Cart/Checkout";
+import ErrorPage from "./ErrorPage";
 // Styles 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -16,17 +16,18 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "products",
-    element:<h1>Products</h1>
+    element:<h1>Products</h1>,
   },
   {
     path: "checkout",
-    element: <CheckoutList />,
+    element: <Checkout />,
+    // errorElement: <ErrorPage />,
     children: [
-      {index: "cartList", element: <CartList />},
-      { path: "check", element: <p>Path</p>},
+      { path: "check", element: <p>Path</p> ,},
     ],
   },
 ]);
