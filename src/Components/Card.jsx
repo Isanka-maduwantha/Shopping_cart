@@ -31,9 +31,70 @@ const CardTitle = ({ title }) => {
     </>
   );
 };
-const Card = ({ productList, setCartList }) => {
+const CardRating = ({ rating }) => {
   const stars = Array(5).fill(0);
 
+  return (
+    <>
+      <div className="ratings flex  items-center">
+        {stars.map((_, index) => (
+          <>
+            <FaStar
+              color={index < Math.round(rating) ? "orange" : "grey"}
+            />
+          </>
+        ))}{" "}
+        <span className="ml-3">{rating}</span>
+   
+      </div>
+    </>
+  );
+};
+const CardAvailability = ({availability}) => {
+  return (
+    <>
+           <span className="avalability m-5 cursor-pointer">
+          {availability === "In Stock" ? (
+            <span className="bg-emerald-100 p-2 text-emerald-500 font-bold rounded-2xl">
+              In Stock
+            </span>
+          ) : (
+            <span className="bg-gray-200 p-2  font-semibold rounded-xl">
+              {availability}
+            </span>
+          )}
+        </span>
+    
+    </>
+  )
+}
+const CardPrice = ({price}) => {
+  return (
+    <>
+                      <div className="product_price">
+                  <span className="text-2xl font-semibold">
+                    ${price}
+                  </span>
+                </div>
+    </>
+  )
+}
+const CardAddCart = ({addToCart,product}) => {
+  return (
+    <>
+                      <div className="product_add_cart">
+                  <button
+                    className="bg-acent-red text-white p-3 rounded-xl flex items-center gap-2 font-semibold shadow-sm hover:shadow-md cursor-pointer"
+                    onClick={() => addToCart(product)}
+                  >
+                    <FaCartPlus color="white" />
+                    Add to Cart
+                  </button>
+                </div>
+    </>
+  )
+}
+const Card = ({ productList, setCartList }) => {
   const handleAddToCart = (obj) => {
     setCartList(obj);
   };
@@ -64,48 +125,13 @@ const Card = ({ productList, setCartList }) => {
                 <div className="extra_special_details"></div>
                 <CardTitle title={product.title} />
                 <div className="product_info m-3 ml-0 flex justify-between items-center">
-                  <div className="ratings flex  items-center">
-                    {stars.map((_, index) => (
-                      <>
-                        <FaStar
-                          color={
-                            index < Math.round(product.rating)
-                              ? "orange"
-                              : "grey"
-                          }
-                        />
-                      </>
-                    ))}{" "}
-                    <span className="ml-3">{product.rating}</span>
-                    <span className="avalability m-5 cursor-pointer">
-                      {product.availabilityStatus === "In Stock" ? (
-                        <span className="bg-emerald-100 p-2 text-emerald-500 font-bold rounded-2xl">
-                          In Stock
-                        </span>
-                      ) : (
-                        <span className="bg-gray-200 p-2  font-semibold rounded-xl">
-                          {product.availabilityStatus}
-                        </span>
-                      )}
-                    </span>
-                  </div>
+                  <CardRating  rating={product.rating}/>
+                  <CardAvailability availability={product.availabilityStatus}/>
                 </div>
               </div>
               <div className="product_action flex justify-between w-full p-1 items-center self-end">
-                <div className="product_price">
-                  <span className="text-2xl font-semibold">
-                    ${product.price}
-                  </span>
-                </div>
-                <div className="product_add_cart">
-                  <button
-                    className="bg-acent-red text-white p-3 rounded-xl flex items-center gap-2 font-semibold shadow-sm hover:shadow-md cursor-pointer"
-                    onClick={() => handleAddToCart(product)}
-                  >
-                    <FaCartPlus color="white" />
-                    Add to Cart
-                  </button>
-                </div>
+                <CardPrice price={product.price}/>
+                <CardAddCart product={product} addToCart={handleAddToCart}/>
               </div>
             </div>
           );
